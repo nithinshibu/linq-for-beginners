@@ -44,6 +44,17 @@ namespace LINQ_Fundamentals.LINQ_Concepts.Aggregate_Operations
             }
         }
 
+        public void GroupProductsBasedOnCategory()
+        {
+            List<Product> products = GetProductList();
+
+            var productCategoryCount = from p in products group p by p.Category into g select (Category: g.Key, ProductCount: g.Count());
+
+            foreach(var prodinfo in productCategoryCount)
+            {
+                Console.WriteLine($"Category: {prodinfo.Category} , Product Count: {prodinfo.ProductCount}");
+            }
+        }
 
 
         #endregion
